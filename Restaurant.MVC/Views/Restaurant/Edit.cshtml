@@ -1,0 +1,132 @@
+﻿@using Restaurant.Domain.Dto;
+@using Restaurant.Domain.Enums;
+@model EditRestaurantDto 
+@{
+    ViewData["Title"] = "Edit";
+    var options = Enum.GetValues(typeof(RestaurantTypes)).Cast<RestaurantTypes>().ToList();
+}
+
+<h1 class="display-1">Edit</h1>
+<h4 class="display-6">Restaurant: @Model.OldName</h4>
+
+<form asp-controller="Restaurant" asp-action="Edit" method="post">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-sm-6">
+            <div class="form-floating mb-3">
+                <input asp-for="OldName" disabled type="text" value="@Model.OldName" class="form-control" />
+                <label asp-for="OldName">Current Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="OldDescription" disabled type="text" value="@Model.OldDescription" class="form-control" />
+                <label asp-for="OldDescription">Current Description</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="OldType" disabled type="text" value="@Model.OldType" class="form-control" />
+                <label asp-for="OldType">Current Type</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="OldStreet" disabled type="text" value="@Model.OldStreet" class="form-control" />
+                <label asp-for="OldStreet">Current Street</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="OldCity" disabled type="text" value="@Model.OldCity" class="form-control" />
+                <label asp-for="OldCity">Current City</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="OldPostalCode" disabled type="text" value="@Model.OldPostalCode" class="form-control" />
+                <label asp-for="OldPostalCode">Current Postal code</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="OldPostalCity" disabled type="text" value="@Model.OldPostalCity" class="form-control" />
+                <label asp-for="OldPostalCity">Current Postal city</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="OldPhoneNumber" disabled type="text" value="@Model.OldPhoneNumber" class="form-control" />
+                <label asp-for="OldPhoneNumber">Current Phone</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="OldEmail" disabled type="text" value="@Model.OldEmail" class="form-control" />
+                <label asp-for="OldEmail">Current Email</label>
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+            <div class="form-floating mb-3">
+                <input asp-for="NewName" type="text" class="form-control" value="@Model.OldName" />
+                <label asp-for="NewName">New Name</label>
+                <span class="text-danger" asp-validation-for="NewName"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="NewDescription" type="text" class="form-control" value="@Model.OldDescription" />
+                <label asp-for="NewDescription">New Description</label>
+                <span class="text-danger" asp-validation-for="NewDescription"></span>
+            </div>
+
+            <div class="mb-3 ">
+                <select class="form-select" asp-for="NewTypes" style="height: 58px" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    @foreach (var item in options)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+                <span asp-validation-for="NewTypes" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="NewStreet" type="text" class="form-control" value="@Model.OldStreet" />
+                <label asp-for="NewStreet">New street</label>
+                <span class="text-danger" asp-validation-for="NewStreet"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="NewCity" type="text" class="form-control" value="@Model.OldCity" />
+                <label asp-for="NewCity">New city</label>
+                <span class="text-danger" asp-validation-for="NewCity"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="NewPostalCode" type="text" class="form-control" value="@Model.OldPostalCode" />
+                <label asp-for="NewPostalCode">New postal code</label>
+                <span class="text-danger" asp-validation-for="NewPostalCode"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="NewPostalCity" type="text" class="form-control" value="@Model.OldPostalCity" />
+                <label asp-for="NewPostalCity">New postal city</label>
+                <span class="text-danger" asp-validation-for="NewPostalCity"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="NewPhoneNumber" type="text" class="form-control" value="@Model.OldPhoneNumber" />
+                <label asp-for="NewPhoneNumber">New phone number</label>
+                <span class="text-danger" asp-validation-for="NewPhoneNumber"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="NewEmail" type="text" class="form-control" value="@Model.OldEmail" />
+                <label asp-for="NewEmail">New Email</label>
+                <span class="text-danger" asp-validation-for="NewEmail"></span>
+            </div>
+        </div>
+        <div class="container-fluid d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit" style="width: 200px">Save</button>
+        </div>
+        <p class="text-center text-danger">@ViewBag.Error</p>
+    </div>
+</form>
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

@@ -1,0 +1,12 @@
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\bin\Debug\net7.0\Restaurant.Domain.deps.json
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\bin\Debug\net7.0\Restaurant.Domain.dll
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\bin\Debug\net7.0\Restaurant.Domain.pdb
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\obj\Debug\net7.0\Restaurant.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\obj\Debug\net7.0\Restaurant.Domain.AssemblyInfoInputs.cache
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\obj\Debug\net7.0\Restaurant.Domain.AssemblyInfo.cs
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\obj\Debug\net7.0\Restaurant.Domain.csproj.CoreCompileInputs.cache
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\obj\Debug\net7.0\Restaurant.Domain.dll
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\obj\Debug\net7.0\refint\Restaurant.Domain.dll
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\obj\Debug\net7.0\Restaurant.Domain.pdb
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\obj\Debug\net7.0\ref\Restaurant.Domain.dll
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Domain\obj\Debug\net7.0\Restaurant.Domain.csproj.AssemblyReference.cache

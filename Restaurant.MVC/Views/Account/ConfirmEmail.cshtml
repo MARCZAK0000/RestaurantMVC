@@ -1,0 +1,29 @@
+﻿`
+@model bool
+@{
+    ViewData["Title"] = "Confirm Email";
+}
+
+<div class="container text-center">
+    <h1>@ViewData["Title"]</h1>
+    <div class="container">
+        <div class="mt-5">
+
+            @if (Model){
+                <p class="display-6">
+                    Congratulations, You have confirmed your Email
+                </p>
+            }
+            else
+            {
+                <p class="display-6">
+                   Action Failed: We can't confirm your mail
+                </p>
+                <p class="display-6">
+                    Pleas try again later!!
+                </p>
+            }
+            <a asp-controller="Home" asp-action="Index">Main Page</a>
+        </div>
+    </div>
+</div>

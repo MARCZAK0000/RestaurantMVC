@@ -1,0 +1,17 @@
+﻿@using Restaurant.Domain.Dto;
+@model UserInfoDto
+@{
+    ViewData["Title"] = "Home";
+
+}
+
+<div class="row mt-5">
+    <div class="col-sm-3 border-end">
+       @await Html.PartialAsync("_menuPartial", Model.IsEmailConfirmed)
+    </div>
+    <div class="col-sm-9">
+        <h1>Welcome @Model.UserName</h1>
+        <p>To your account home page</p>
+    </div>
+</div>
+

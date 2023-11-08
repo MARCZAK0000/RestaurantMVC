@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+    var queryString = string.Empty;
+}
+
+<div class="container-fluid">
+    <div class="container mt-5">
+        <div class="text-center">
+            <h2 class="display-2">
+                Find restaurant
+            </h2>
+            <h6 class="display-6">
+                in your neighborhood
+            </h6>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="card bg-success">
+            <div class="card-body">
+                <div class="container text-center">
+                    <p class="display-6 text-uppercase text-white">Find Restaurant</p>
+                </div>
+                <div class="container-fluid d-flex justify-content-center align-items-center">
+                    
+                    <form class="w-75 m-4" action="/Home/Index" method="post">
+                        <div class="input-group">
+                            <div class="form-floating d-flex mb-3" style="width:100%">
+                                <input id="input" asp-for="@queryString" type="text" class="form-control" asp-route-queryString="@queryString"/>
+                                <label asp-for="@queryString">City</label>
+                                <span class="input-group-prepend">
+                                    <button class="btn bg-primary h-100" type="submit">Find</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

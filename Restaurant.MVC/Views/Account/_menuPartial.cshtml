@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using Restaurant.Application.ApplicationUser.ApplicationUser;
+
+@inject UserManager<IdentityUser> UserManager
+@inject IUserContext _userContext
+
+@{
+    var currentUser = _userContext.GetCurrentUser();
+    var getUser = await UserManager.FindByIdAsync(currentUser.Id);
+    var isEmailConfirmed = await UserManager.IsEmailConfirmedAsync(getUser!);
+}
+
+<div class="container-sm mb-1">
+    <a class="btn btn-primary w-100 ps-3 text-start" asp-controller="Account" asp-action="ChangePhoneNumber" style="font-size: 20px">Change Phone</a>
+</div>
+<div class="container-sm mb-1">
+    <a class="btn btn-primary w-100 ps-3 text-start" asp-controller="Account" asp-action = "ChangePassword" style="font-size: 20px">Change Password</a>
+</div>
+<div class="container-sm mb-1">
+    <a class="btn btn-primary w-100 ps-3 text-start @(isEmailConfirmed ? "disabled" : "" )" aria-disabled="@(isEmailConfirmed?"true":"false")"
+       style="font-size: 20px" asp-controller="Account" asp-action="EmailConfirmation">Email Authentication</a>
+
+</div>
+<div class="container-sm mb-1">
+    <a class="btn btn-primary w-100 ps-3 text-start" style="font-size: 20px">Details</a>
+</div>
+<div class="container-sm mb-1">
+    <a class="btn btn-danger w-100 ps-3 text-start" asp-controller="Account" asp-action="SignOut" style="font-size: 20px">Logout</a>
+</div>
+
+
+
+

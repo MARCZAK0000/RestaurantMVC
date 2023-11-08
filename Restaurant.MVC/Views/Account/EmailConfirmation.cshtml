@@ -1,0 +1,43 @@
+﻿@using Restaurant.Domain.Dto;
+@model ConfirmEmailDto
+@{
+    ViewData["Title"] = "Confirm Email";
+}
+
+<div class="row mt-5">
+
+    <div class="col-sm-3">
+        @await Html.PartialAsync("_menuPartial")
+    </div>
+    <div class="col-sm-9 border-start"> 
+        <div class="container">
+            <h2 class="display-6 mb-1">@ViewData["Title"]</h2>
+            <h2 class="display-6 mb-5">@Model.Email</h2>
+            <form class="mb-5" action="/Account/GenerateToken" method="post">
+                
+                <div class="input-group mb-3 w-100">
+                    <div class="form-floating d-flex mb-3" style="width:100%">
+                        <input id="email_confirmation__token" disabled asp-for="Token" class="form-control" value="@Model.Token" />
+                        <label asp-for="Token">Email confirmation token</label>
+                     <span class="input-group-prepend" >
+                        <button id="email_confirmation__copy" class="btn btn-outline-secondary h-100 @(Model.Token == string.Empty? "disabled": "")" type="button"> Copy </button>
+                     </span>
+                    </div>
+                    
+                </div>
+                <button type="submit" class="w-100 btn btn-lg btn-primary">Generate Token</button>
+            </form>
+            <form method="post" action="/Account/SuccessfullConfirmation">
+                <div class="form-floating mb-3">
+                    <input id="email_confirmation__tokenToEmail" disabled asp-for="TokenToEmail" class="form-control" />
+                    <label asp-for="TokenToEmail">Email confirmation token</label>
+                </div>
+                <button type="submit" class="w-100 btn btn-lg btn-primary @(Model.Token == string.Empty? "disabled": "")">Send Token</button>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+

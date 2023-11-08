@@ -1,0 +1,15 @@
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\bin\Debug\net7.0\Restaurant.Application.deps.json
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\bin\Debug\net7.0\Restaurant.Application.dll
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\bin\Debug\net7.0\Restaurant.Application.pdb
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\bin\Debug\net7.0\Restaurant.Domain.dll
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\bin\Debug\net7.0\Restaurant.Domain.pdb
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\obj\Debug\net7.0\Restaurant.Application.csproj.AssemblyReference.cache
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\obj\Debug\net7.0\Restaurant.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\obj\Debug\net7.0\Restaurant.Application.AssemblyInfoInputs.cache
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\obj\Debug\net7.0\Restaurant.Application.AssemblyInfo.cs
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\obj\Debug\net7.0\Restaurant.Application.csproj.CoreCompileInputs.cache
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\obj\Debug\net7.0\Restaurant.Application.csproj.CopyComplete
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\obj\Debug\net7.0\Restaurant.Application.dll
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\obj\Debug\net7.0\refint\Restaurant.Application.dll
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\obj\Debug\net7.0\Restaurant.Application.pdb
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.Application\obj\Debug\net7.0\ref\Restaurant.Application.dll

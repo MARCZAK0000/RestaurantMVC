@@ -1,0 +1,57 @@
+﻿@using Restaurant.Domain.Dto;
+@using Restaurant.Domain.PaginationResponse;
+@model PaginationResponse<List<GetRestaurantDto>>
+
+
+@{
+    var info = new PaginationViewModel()
+    {
+        TotalPage = Model.TotalPage,
+        StartPage = Model.PageStart,
+        EndPage = Model.PageEnd,
+        PageNumber = Model.PageNumber
+       
+    };
+}
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col">Name</th>
+                <th class="col">Restaurant Type</th>
+                <th class="col">Street</th>
+                <th class="col">City</th>
+                <th class="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Type</td>
+                    <td>@item.Street</td>
+                    <td>@item.City</td>
+                    <td>
+                        <a class="btn btn-success" asp-action="Details" asp-route-encodedName="@item.EncodedName">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @await Html.PartialAsync("_paginationPartial", info)
+   
+
+</div>
+
+
+
+
+
+
+
+
+
+

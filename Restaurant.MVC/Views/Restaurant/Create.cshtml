@@ -1,0 +1,111 @@
+﻿@using Restaurant.Domain.Dto;
+@using Restaurant.Domain.Enums;
+@model CreateRestaurantDto
+
+
+@{
+    ViewData["Title"] = "Create Restaurant";
+    var options = Enum.GetValues(typeof(RestaurantTypes)).Cast<RestaurantTypes>().ToList();
+
+}
+
+
+<div class="container-fluid">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        <div class="col-md-5">
+            <form action="/Restaurant/Create" method="post">
+                <h2>@ViewData["Title"]</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Name" class="form-control" autocomplete="on" aria-required="true" />
+                    <label asp-for="Name">Name</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Description" class="form-control" autocomplete="on" aria-required="true" />
+                    <label asp-for="Description">Description</label>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 ">
+                    <select class="form-select" asp-for="Type" style="height: 58px" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        @foreach (var item in options)
+                        {
+                            <option>@item</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="Street" class="form-control" autocomplete="on" aria-required="true" />
+                    <label asp-for="Street">Street</label>
+                    <span asp-validation-for="Street" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="City" class="form-control" autocomplete="on" aria-required="true" />
+                    <label asp-for="City">City</label>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="PostalCode" class="form-control" autocomplete="on" aria-required="true" />
+                            <label asp-for="PostalCode">Postal Code</label>
+                            <span asp-validation-for="PostalCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="PostalCity" class="form-control" autocomplete="on" aria-required="true" />
+                            <label asp-for="PostalCity">City</label>
+                            <span asp-validation-for="PostalCity" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-floating mb-3">
+                    <input asp-for="Country" class="form-control" autocomplete="on" aria-required="true" />
+                    <label asp-for="Country">Country</label>
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="PhoneNumber" class="form-control" autocomplete="on" aria-required="true" />
+                            <label asp-for="PhoneNumber">Phone Number</label>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Email" class="form-control" autocomplete="on" aria-required="true" />
+                            <label asp-for="Email">Email</label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="registerRestaurant" type="submit" class="w-100 btn btn-lg btn-primary">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

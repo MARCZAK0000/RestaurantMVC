@@ -1,0 +1,47 @@
+﻿@using Restaurant.Application.ApplicationUser.ApplicationUser;
+@inject IUserContext userContext
+
+
+@{
+    string? currentUser = userContext.GetCurrentUser().Id;
+    var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var currentUrl = ViewContext.RouteData.Values["Action"]?.ToString();
+}
+
+
+
+
+@if(currentUser is null)
+{
+    <ul class="nav nav-tabs flex-grow-1">
+        <li class="nav-item">
+            <a class="nav-link text-dark  @(controller == "Home" && currentUrl =="Index" ? "active" : "" )"  asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark @(controller == "Restaurant" && currentUrl =="Index" ? "active" : "" )" asp-area="" asp-controller="Restaurant" asp-action="Index">Restaurants</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark  @(controller == "Home" && currentUrl =="Privacy" ? "active" : "" )" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </li>
+
+    </ul>
+}
+
+else
+{
+    <ul class="nav nav-tabs flex-grow-1">
+        <li class="nav-item">
+            <a class="nav-link text-dark @(controller == "Home" && currentUrl =="Index" ? "active" : "" )" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark @(controller == "Restaurant" && currentUrl =="Index" ? "active" : "" )" asp-area="" asp-controller="Restaurant" asp-action="Index">Restaruants</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark @(controller == "Restaurant" && currentUrl =="Create" ? "active" : "" )" asp-area="" asp-controller="Restaurant" asp-action="Create">Create Restaurant</a>
+        </li>
+    </ul>
+}
+
+

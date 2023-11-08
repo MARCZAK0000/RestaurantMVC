@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using Restaurant.Application.ApplicationUser.ApplicationUser;
+@using Restaurant.Domain.Dto;
+@model ChangePhoneDto
+
+
+@inject UserManager<IdentityUser> UserManager
+@inject IUserContext UserContext
+
+@{
+    ViewData["Title"] = "Change Phone Number";
+
+    var getUserId = UserContext.GetCurrentUser();
+    var getCurrentUser = await UserManager.FindByIdAsync(getUserId.Id);
+    var phoneNumber = await UserManager.GetPhoneNumberAsync(getCurrentUser!);
+    Model.PhoneNumber = phoneNumber!;
+}
+
+<div class="row mt-5">
+    <div class="col-sm-3">
+        @await Html.PartialAsync("_menuPartial")
+    </div>
+    <div class="col-sm-9 border-start">
+        <div>
+            <form action="/Account/ChangePhoneNumber" method="post">
+                <h2 class="display-6 mb-5">@ViewData["title"]</h2>
+                <div class="form-floating mb-3">
+                    <input asp-for="PhoneNumber" disabled value="@Model.PhoneNumber" class="form-control" />
+                    <label asp-for="PhoneNumber">Current phone number</label>
+                    <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="NewPhoneNumber" class="form-control" />
+                    <label asp-for="NewPhoneNumber">New phone number</label>
+                    <span class="text-danger" asp-validation-for="NewPhoneNumber"></span>
+                </div>
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Change Phone</button>
+            </form>
+            <div class="text-center">
+                <p class="@(ViewBag.Message =="Change Successed"? "text-success": "text-danger")">@ViewBag.Message</p>
+                <p class="text-danger">@ViewBag.Error</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
