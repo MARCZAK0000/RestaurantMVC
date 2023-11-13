@@ -38,6 +38,14 @@ else
         <li class="nav-item">
             <a class="nav-link text-dark @(controller == "Restaurant" && currentUrl =="Index" ? "active" : "" )" asp-area="" asp-controller="Restaurant" asp-action="Index">Restaruants</a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark @(controller == "Restaurant" && currentUrl =="UserRestaruants" ? "active" : "" )" asp-area="" asp-controller="Restaurant" asp-action="UserRestaruants" asp-route-userID="@currentUser">Your Restaurant</a>
+        </li>
+    </ul>
+
+    <ul class="nav nav-tabs flex-grow-1 justify-content-end">
+        
         <li class="nav-item">
             <a class="nav-link text-dark @(controller == "Restaurant" && currentUrl =="Create" ? "active" : "" )" asp-area="" asp-controller="Restaurant" asp-action="Create">Create Restaurant</a>
         </li>

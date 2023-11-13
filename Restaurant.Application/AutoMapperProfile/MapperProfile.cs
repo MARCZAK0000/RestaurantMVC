@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Restaurant.Application.ApplicationUser.ApplicationUser;
 using Restaurant.Domain.Dto;
 using Restaurant.Domain.Enitites;
 using System;
@@ -12,8 +13,10 @@ namespace Restaurant.Application.AutoMapperProfile
 {
     public class MapperProfile : Profile
     {
-        public MapperProfile()
+        public MapperProfile(IUserContext userContext)
         {
+            var user = userContext.GetCurrentUser();
+
             CreateMap<IdentityUser, UserInfoDto>()
                 .ForMember(pr=>pr.IsEmailConfirmed , req=>req.MapFrom(src=>src.EmailConfirmed))
                 .ForMember(pr=>pr.UserName , req=>req.MapFrom(src=>src.UserName))
@@ -42,7 +45,8 @@ namespace Restaurant.Application.AutoMapperProfile
                 .ForMember(pr => pr.City, req => req.MapFrom(src => src.ContactDetails.City))
                 .ForMember(pr => pr.PhoneNumber, req => req.MapFrom(src => src.ContactDetails.PhoneNumber))
                 .ForMember(pr => pr.Email, req => req.MapFrom(src => src.ContactDetails.Email))
-                .ForMember(pr => pr.Country, req => req.MapFrom(src => src.ContactDetails.Country));
+                .ForMember(pr => pr.Country, req => req.MapFrom(src => src.ContactDetails.Country))
+                .ForMember(pr=>pr.IsEditable, req=>req.MapFrom(src=> user != null && src.CreatedById  == user.Id));
 
 
             CreateMap<Domain.Enitites.Restaurant, ParticularGetRestaurantDto>()
@@ -52,7 +56,8 @@ namespace Restaurant.Application.AutoMapperProfile
                .ForMember(pr => pr.Email, req => req.MapFrom(src => src.ContactDetails.Email))
                .ForMember(pr => pr.Country, req => req.MapFrom(src => src.ContactDetails.Country))
                .ForMember(pr=>pr.PostalCode, req=>req.MapFrom(src=>src.ContactDetails.PostalCode))
-               .ForMember(pr=>pr.PostalCity, req=>req.MapFrom(src=>src.ContactDetails.PostalCity));
+               .ForMember(pr=>pr.PostalCity, req=>req.MapFrom(src=>src.ContactDetails.PostalCity))
+               .ForMember(pr => pr.IsEditable, req => req.MapFrom(src => user!= null && src.CreatedById == user.Id));
 
         }
     }

@@ -23,6 +23,10 @@ namespace Restaurant.MVC.Controllers
             return View();
         }
 
+        public IActionResult NoAccess() 
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Index(string queryString)

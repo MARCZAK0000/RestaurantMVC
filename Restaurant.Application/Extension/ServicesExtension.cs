@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using Restaurant.Application.ApplicationUser.ApplicationUser;
@@ -20,12 +21,20 @@ namespace Restaurant.Application.Extension
     {
         public static void AddApplication(this IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(MapperProfile));
+            services.AddScoped<IUserContext, UserContext>();
+
+            services.AddScoped(provider => new MapperConfiguration(cfg =>
+            {
+                var scoped = provider.CreateScope();
+                var userContext = scoped.ServiceProvider.GetService<IUserContext>();
+                cfg.AddProfile(new MapperProfile(userContext!));
+            }).CreateMapper()
+            );  //ręczne stworzenie serwisu AutoMappera z wstrzyknięciem serwisu IUserContext do sprawdzania czy uzytkownik moze edytowac restauracja
 
             services.AddValidatorsFromAssemblyContaining<Application.Services.Command.Validators.CreateAccValidator>()
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters();
-            services.AddScoped<IUserContext, UserContext>();
+           
 
             services.AddScoped<ICommandAccountServices, CommandAccountServices>();
 

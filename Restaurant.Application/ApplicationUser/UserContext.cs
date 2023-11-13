@@ -29,7 +29,12 @@ namespace Restaurant.Application.ApplicationUser.ApplicationUser
         {
             var user = _contextAccessord.HttpContext?.User;
 
-            if (user.Identity.Name is null)
+            if(user is null)
+            {
+                throw new InvalidOperationException("Current user is unknown");
+            }
+
+            if (user.Identity is null || !user.Identity.IsAuthenticated)
             {
                 return new CurrentUser(null!, null!);
             }

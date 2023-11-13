@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Restaurant.Application.ApplicationUser.ApplicationUser;
 using Restaurant.Domain.Dto;
-using Restaurant.Domain.Enitites;
 using Restaurant.Domain.HelperServices;
 using Restaurant.Domain.PaginationResponse;
 using Restaurant.Domain.ResponseHelper;
@@ -30,7 +28,7 @@ namespace Restaurant.Infrastructure.Repostiory
         {
             var getuser = _userContext.GetCurrentUser();
 
-            if(getuser is null)
+            if (getuser is null)
             {
                 return _response.SetResult(false)
                     .SetMessage("Non authorize user")
@@ -60,17 +58,17 @@ namespace Restaurant.Infrastructure.Repostiory
 
         }
 
-     
+
         public async Task<PaginationResponse<IEnumerable<Domain.Enitites.Restaurant>>> GetAllRestaurantAsync(int pageSize, int pageNumber, string querySearch)
         {
             var response = new PaginationResponseBuilder<IEnumerable<Domain.Enitites.Restaurant>>();
             var baseQuery = _restaurantDatabaseContext
                 .Restautrants
                 .Include(pr => pr.ContactDetails)
-                .Where(pr=>querySearch==null || pr.ContactDetails.City.ToLower().Contains(querySearch));
-                
-            var result = await baseQuery.    
-                 Skip(pageSize*(pageNumber-1))
+                .Where(pr => querySearch == null || pr.ContactDetails.City.ToLower().Contains(querySearch));
+
+            var result = await baseQuery.
+                 Skip(pageSize * (pageNumber - 1))
                 .Take(pageSize)
                 .ToListAsync();
 
@@ -79,8 +77,8 @@ namespace Restaurant.Infrastructure.Repostiory
             return response.SetItems(result)
                 .SetTotalCount(totalCount)
                 .Build();
-                
-            
+
+
         }
 
         public async Task<Domain.Enitites.Restaurant> GetRestautrantAsync(string encodeName)
@@ -89,7 +87,7 @@ namespace Restaurant.Infrastructure.Repostiory
                 .Include(pr => pr.ContactDetails)
                 .FirstOrDefaultAsync(pr => pr.EncodedName.ToLower() == encodeName.ToLower());
 
-            if(result is null)
+            if (result is null)
             {
                 throw new Exception("Not found");
             }
@@ -105,7 +103,7 @@ namespace Restaurant.Infrastructure.Repostiory
                 .Include(pr => pr.ContactDetails)
                 .FirstOrDefault(pr => pr.EncodedName == encodedName);
 
-            if(restaurant is null) 
+            if (restaurant is null)
             {
                 return _response
                     .SetResult(false)
@@ -113,15 +111,15 @@ namespace Restaurant.Infrastructure.Repostiory
                     .Build();
             }
 
-            if(edit.NewName is not null) restaurant.Name = edit.NewName;
-            if(edit.NewDescription is not null) restaurant.Description = edit.NewDescription;
+            if (edit.NewName is not null) restaurant.Name = edit.NewName;
+            if (edit.NewDescription is not null) restaurant.Description = edit.NewDescription;
             restaurant.Type = edit.NewTypes;
-            if(edit.NewStreet is not null) restaurant.ContactDetails.Street = edit.NewStreet;
-            if(edit.NewCity is not null) restaurant.ContactDetails.City = edit.NewCity;
-            if(edit.NewPostalCode is not null) restaurant.ContactDetails.PostalCode = edit.NewPostalCode;
-            if(edit.NewPostalCity is not null) restaurant.ContactDetails.PostalCity = edit.NewPostalCity;
-            if(edit.NewPhoneNumber is not null) restaurant.ContactDetails.PhoneNumber = edit.NewPhoneNumber;
-            if(edit.NewEmail is not null) restaurant.ContactDetails.Email = edit.NewEmail;
+            if (edit.NewStreet is not null) restaurant.ContactDetails.Street = edit.NewStreet;
+            if (edit.NewCity is not null) restaurant.ContactDetails.City = edit.NewCity;
+            if (edit.NewPostalCode is not null) restaurant.ContactDetails.PostalCode = edit.NewPostalCode;
+            if (edit.NewPostalCity is not null) restaurant.ContactDetails.PostalCity = edit.NewPostalCity;
+            if (edit.NewPhoneNumber is not null) restaurant.ContactDetails.PhoneNumber = edit.NewPhoneNumber;
+            if (edit.NewEmail is not null) restaurant.ContactDetails.Email = edit.NewEmail;
 
             await _restaurantDatabaseContext.SaveChangesAsync();
             _restaurantDatabaseContext.SaveChangesFailed += restaurantDatabaseContext_SaveChangesFailed;
@@ -141,7 +139,25 @@ namespace Restaurant.Infrastructure.Repostiory
 
         public async Task<PaginationResponse<IEnumerable<Domain.Enitites.Restaurant>>> GetAllUserRestaurantsAsync(int pageSize, int pageNumber, string userID)
         {
-            throw new NotImplementedException();
+            var response = new PaginationResponseBuilder<IEnumerable<Domain.Enitites.Restaurant>>();
+
+            var baseQuery = _restaurantDatabaseContext
+                .Restautrants
+                .Include(pr => pr.ContactDetails)
+                .Where(pr => pr.CreatedById!.ToLower() == userID.ToLower());
+
+
+            var result = await baseQuery.
+                Skip(pageSize * (pageNumber - 1))
+               .Take(pageSize)
+               .ToListAsync();
+
+            var totalCount = baseQuery.Count();
+
+            return response.SetItems(result)
+                .SetTotalCount(totalCount)
+                .Build();
+
         }
     }
 

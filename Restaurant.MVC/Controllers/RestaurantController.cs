@@ -40,17 +40,16 @@ namespace Restaurant.MVC.Controllers
             return View( new Domain.Dto.CreateRestaurantDto());
         }
         [Authorize]
-        [Route("/Restaurant/{userID}/")]
-        public async Task<IActionResult> UserRestaruants(int pageNumber = 1)
+        [Route("/Restaurant/{userID}/UserRestaruants")]
+        public async Task<IActionResult> UserRestaruants(string userID, int pageNumber = 1)
         {
             const int pageSize = 10;    
-            var userId = _userContext.GetCurrentUser().Id;
-            if(userId is null)
+            if(userID is null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            var result = await _restaurantHandlerServices.GetAllUserRestaurantsAsync(pageSize, pageNumber, userId);
-            return View();
+            var result = await _restaurantHandlerServices.GetAllUserRestaurantsAsync(pageSize, pageNumber, userID);
+            return View(result);
         }
 
 
@@ -75,9 +74,10 @@ namespace Restaurant.MVC.Controllers
             }
             var user = _userContext.GetCurrentUser();
             var result = await _restaurantHandlerServices.GetRestaurantAsync(encodedName);
-            if(result.CreatedById != user.Id)
+
+            if (!result.IsEditable)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("NoAccess", "Home");
             }
 
             return View(new EditRestaurantDto()

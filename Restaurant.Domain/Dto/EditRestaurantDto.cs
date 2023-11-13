@@ -46,5 +46,6 @@ namespace Restaurant.Domain.Dto
         public string NewEmail { get; set; }    
 
         public string? EncodedName { get; set; }
+
     }
 }

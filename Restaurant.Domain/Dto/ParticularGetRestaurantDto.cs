@@ -36,5 +36,7 @@ namespace Restaurant.Domain.Dto
         public string EncodedName { get; private set; }
 
         public string CreatedById { get; set; }
+
+        public bool IsEditable { get; set; }
     }
 }
