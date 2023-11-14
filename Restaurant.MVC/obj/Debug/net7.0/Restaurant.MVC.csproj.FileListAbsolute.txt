@@ -301,3 +301,4 @@ C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.MVC\bin\De
 C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.MVC\bin\Debug\net7.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.MVC\bin\Debug\net7.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.MVC\bin\Debug\net7.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\jjmar\Desktop\Repository\ASPNETCore\RestaurantMVC\Restaurant.MVC\bin\Debug\net7.0\libman.json

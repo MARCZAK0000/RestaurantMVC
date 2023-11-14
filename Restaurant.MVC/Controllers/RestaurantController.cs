@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Restaurant.Application.ServicesRestaurant.Handler;
-using Restaurant.Application.ServicesRestauran.Command;
 using Restaurant.Application.ServicesRestaurant.Command;
 using Microsoft.AspNetCore.Authorization;
 using Restaurant.Domain.Dto;
 using Restaurant.Application.ApplicationUser.ApplicationUser;
-using Restaurant.Domain.PaginationResponse;
-using System.Net.WebSockets;
+using Restaurant.MVC.Extension;
 
 namespace Restaurant.MVC.Controllers
 {
@@ -29,22 +27,36 @@ namespace Restaurant.MVC.Controllers
         public async Task<IActionResult> Index(int pageNumber = 1, string querySearch = default!)
         {
             const int pageSize = 10;
-            
+
             var result = await _restaurantHandlerServices.GetAllRestaurantAsync(pageSize, pageNumber, querySearch);
- 
+
             return View(result);
         }
         [Authorize]
-        public IActionResult Create() 
+        public IActionResult Create()
         {
+            var user = _userContext.GetCurrentUser();
+            if (!user.IsInRole("Owner") && !user.IsInRole("Manager") && !user.IsInRole("Admin"))
+            {
+                return RedirectToAction("NoAccess", "Home");
+            }
             return View( new Domain.Dto.CreateRestaurantDto());
         }
         [Authorize]
         [Route("/Restaurant/{userID}/UserRestaruants")]
         public async Task<IActionResult> UserRestaruants(string userID, int pageNumber = 1)
         {
-            const int pageSize = 10;    
-            if(userID is null)
+            const int pageSize = 10;
+
+            var user = _userContext.GetCurrentUser();
+
+            if (!user.IsInRole("Owner") && !user.IsInRole("Manager") && !user.IsInRole("Admin"))
+            {
+                return RedirectToAction("NoAccess", "Home");
+            }
+
+
+            if (userID is null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -56,6 +68,8 @@ namespace Restaurant.MVC.Controllers
         [Route("/Restaurant/{encodedName}/details")]
         public async Task<IActionResult> Details(string encodedName)
         {
+
+
             if(encodedName is null)
             {
                 return RedirectToAction("Index");
@@ -68,11 +82,18 @@ namespace Restaurant.MVC.Controllers
         [Route("/Restaurant/{encodedName}/Edit")]
         public async Task<IActionResult> Edit(string encodedName)
         {
+
             if (encodedName is null)
             {
                 return RedirectToAction("Index");
             }
             var user = _userContext.GetCurrentUser();
+
+            if (!user.IsInRole("Owner") && !user.IsInRole("Manager") && !user.IsInRole("Admin"))
+            {
+                return RedirectToAction("NoAccess", "Home");
+            }
+
             var result = await _restaurantHandlerServices.GetRestaurantAsync(encodedName);
 
             if (!result.IsEditable)
@@ -117,7 +138,7 @@ namespace Restaurant.MVC.Controllers
             {
                 return View(create); 
             }
-
+            this.SetNotification("success", "Git Gud");
             return RedirectToAction(nameof(Index));
         }
         [HttpPost]

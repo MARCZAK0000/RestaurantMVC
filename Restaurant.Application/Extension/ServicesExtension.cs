@@ -6,6 +6,8 @@ using Restaurant.Application.ApplicationUser.ApplicationUser;
 using Restaurant.Application.AutoMapperProfile;
 using Restaurant.Application.Services.Command;
 using Restaurant.Application.Services.Handler;
+using Restaurant.Application.ServicesDishes.Command;
+using Restaurant.Application.ServicesDishes.Handler;
 using Restaurant.Application.ServicesRestauran.Command;
 using Restaurant.Application.ServicesRestaurant.Command;
 using Restaurant.Application.ServicesRestaurant.Handler;
@@ -43,6 +45,10 @@ namespace Restaurant.Application.Extension
             services.AddScoped<IRestaurantHandlerServices, RestaurantHandlerServices>();
 
             services.AddScoped<IRestaurantCommandServices, RestaurantCommandServices>();
+
+            services.AddScoped<IDishesServicesCommand, DishesServicesCommand>();
+
+            services.AddScoped<IDishesServicesHandler, DishesServicesHandler>();
 
         }
     }

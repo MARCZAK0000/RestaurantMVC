@@ -28,7 +28,7 @@ namespace Restaurant.Infrastructure.Repostiory
         {
             var getuser = _userContext.GetCurrentUser();
 
-            if (getuser is null)
+            if (getuser is null || !getuser.IsInRole("Owner") || !getuser.IsInRole("Owner"))
             {
                 return _response.SetResult(false)
                     .SetMessage("Non authorize user")
@@ -98,6 +98,15 @@ namespace Restaurant.Infrastructure.Repostiory
 
         public async Task<Response> EditRestaurantAsync(EditRestaurantDto edit, string encodedName)
         {
+            var getuser = _userContext.GetCurrentUser();
+
+            if (getuser is null || !getuser.IsInRole("Owner") || !getuser.IsInRole("Manager"))
+            {
+                return _response.SetResult(false)
+                    .SetMessage("Non authorize user")
+                    .Build();
+            }
+
             var restaurant = _restaurantDatabaseContext
                 .Restautrants
                 .Include(pr => pr.ContactDetails)
@@ -141,10 +150,16 @@ namespace Restaurant.Infrastructure.Repostiory
         {
             var response = new PaginationResponseBuilder<IEnumerable<Domain.Enitites.Restaurant>>();
 
+            var user = _userContext.GetCurrentUser();
+
             var baseQuery = _restaurantDatabaseContext
-                .Restautrants
-                .Include(pr => pr.ContactDetails)
-                .Where(pr => pr.CreatedById!.ToLower() == userID.ToLower());
+               .Restautrants
+               .Include(pr => pr.ContactDetails);
+
+            if (user.IsInRole("Owner"))
+            {          
+                baseQuery.Where(pr => pr.CreatedById!.ToLower() == userID.ToLower());
+            }
 
 
             var result = await baseQuery.

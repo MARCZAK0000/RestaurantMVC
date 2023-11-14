@@ -45,6 +45,9 @@ namespace Restaurant.Infrastructure.Repostiory
             user.PasswordHash = hashPassword;
             var result = await _userManager.CreateAsync(user);
 
+            await _userManager.AddToRoleAsync(user, "User");
+
+
             var confirmationToken = string.Empty;
             if(result.Succeeded)
             {

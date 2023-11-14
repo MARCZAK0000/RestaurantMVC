@@ -4,6 +4,7 @@ using Restaurant.Infrastructure.Extension;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Infrastructure.Database;
+using Restaurant.MVC.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
-
 var app = builder.Build();
 
 

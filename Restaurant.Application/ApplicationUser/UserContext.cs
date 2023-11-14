@@ -36,15 +36,16 @@ namespace Restaurant.Application.ApplicationUser.ApplicationUser
 
             if (user.Identity is null || !user.Identity.IsAuthenticated)
             {
-                return new CurrentUser(null!, null!);
+                return new CurrentUser(null!, null!, null!);
             }
 
             string? id = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
 
             string? email = user.FindFirst(c => c.Type == ClaimTypes.Email)!.Value;
 
+            var roles = user.Claims.Where(c=>c.Type == ClaimTypes.Role).Select(c=>c.Value);
 
-            return new CurrentUser(id, email);
+            return new CurrentUser(id, email, roles);
         }
     }
 }

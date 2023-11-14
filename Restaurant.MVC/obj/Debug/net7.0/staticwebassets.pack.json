@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\notification.js",
+      "PackagePath": "staticwebassets\\js\\notification.js"
+    },
+    {
       "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -243,6 +247,22 @@
     {
       "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\toastr.js\\toastr.css",
+      "PackagePath": "staticwebassets\\lib\\toastr.js\\toastr.css"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\toastr.js\\toastr.js.map",
+      "PackagePath": "staticwebassets\\lib\\toastr.js\\toastr.js.map"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\toastr.js\\toastr.min.css",
+      "PackagePath": "staticwebassets\\lib\\toastr.js\\toastr.min.css"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\toastr.js\\toastr.min.js",
+      "PackagePath": "staticwebassets\\lib\\toastr.js\\toastr.min.js"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Restaurant.MVC.Microsoft.AspNetCore.StaticWebAssets.props",

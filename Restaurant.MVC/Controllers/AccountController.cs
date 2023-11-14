@@ -4,11 +4,7 @@ using Restaurant.Application.ApplicationUser.ApplicationUser;
 using Restaurant.Application.Services.Command;
 using Restaurant.Application.Services.Handler;
 using Restaurant.Domain.Dto;
-using Restaurant.MVC.Models;
-using System.Collections.Specialized;
-using System.Diagnostics.Contracts;
-using System.Dynamic;
-using System.Security.AccessControl;
+using Restaurant.MVC.Extension;
 
 namespace Restaurant.MVC.Controllers
 {
@@ -91,6 +87,7 @@ namespace Restaurant.MVC.Controllers
 
             await _handlerAccountServices.SignOutAsync();
 
+            this.SetNotification("success", "Git Gud");
             return RedirectToAction(nameof(Login));
         }
 
