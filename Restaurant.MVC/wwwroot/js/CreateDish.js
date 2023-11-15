@@ -77,23 +77,6 @@ const CreateDish = async (url, body) => {
 }
 
 
-const GetDishes = async (url) => {
-    try {
-        const response = await fetch(url, {
-            method: 'GET'
-        })
 
-        if (!response.ok) {
-            throw new Error('Something went wrong')
-        }
-
-        const result = response.json();
-        return result
-        
-    }
-    catch (err) {
-        toastr["error"](err)
-    }
-}
 
 

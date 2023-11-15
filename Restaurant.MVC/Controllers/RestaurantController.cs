@@ -41,7 +41,7 @@ namespace Restaurant.MVC.Controllers
         public IActionResult Create()
         {
             var user = _userContext.GetCurrentUser();
-            if (!user.IsInRole("Owner") && !user.IsInRole("Manager") && !user.IsInRole("Admin"))
+            if (!_userContext.CheckUser(user))
             {
                 return RedirectToAction("NoAccess", "Home");
             }
@@ -55,7 +55,7 @@ namespace Restaurant.MVC.Controllers
 
             var user = _userContext.GetCurrentUser();
 
-            if (!user.IsInRole("Owner") && !user.IsInRole("Manager") && !user.IsInRole("Admin"))
+            if (!_userContext.CheckUser(user))
             {
                 return RedirectToAction("NoAccess", "Home");
             }
@@ -94,7 +94,7 @@ namespace Restaurant.MVC.Controllers
             }
             var user = _userContext.GetCurrentUser();
 
-            if (!user.IsInRole("Owner") && !user.IsInRole("Manager") && !user.IsInRole("Admin"))
+            if (!_userContext.CheckUser(user))
             {
                 return RedirectToAction("NoAccess", "Home");
             }
@@ -180,7 +180,7 @@ namespace Restaurant.MVC.Controllers
         {
             var user = _userContext.GetCurrentUser();
 
-            if (!user.IsInRole("Owner") && !user.IsInRole("Manager") && !user.IsInRole("Admin"))
+            if (!_userContext.CheckUser(user))
             {
                 return Forbid();
             }
@@ -200,6 +200,20 @@ namespace Restaurant.MVC.Controllers
             }
             this.SetNotification("Success", "Congratulations");
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("/Restaurant/{encodedName}/Edit/Dish")]
+        public async Task<IActionResult> GetDish(string encodedName)
+        {
+            var user = _userContext.GetCurrentUser();
+
+            if (!_userContext.CheckUser(user))
+            {
+                return Forbid();
+            }
+
+            var result = await 
         }
     }
 }

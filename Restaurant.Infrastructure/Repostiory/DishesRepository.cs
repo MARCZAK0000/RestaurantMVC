@@ -54,6 +54,20 @@ namespace Restaurant.Infrastructure.Repostiory
                 .Build();
         }
 
+        public async Task<IEnumerable<Dishes>> ShowDishesAsync(string restaurantEncodedName)
+        {
+            var restaurant = await _databaseContext.Restautrants.FirstOrDefaultAsync(pr=>pr.EncodedName.ToLower() ==  restaurantEncodedName.ToLower());
+            
+            if(restaurant is null)
+            {
+                throw new Exception("Not Found restaurant");
+            }
+
+            var result = await _databaseContext.Dishes.Include(pr=>pr.Restautrant).Where(pr=>pr.RestaurantID == restaurant.Id).ToListAsync();
+
+            return result;
+        }
+
         private void _databaseContext_SaveChangesFailed(object? sender, Microsoft.EntityFrameworkCore.SaveChangesFailedEventArgs e)
         {
             throw new Exception("Something went bad with saving dish to database");

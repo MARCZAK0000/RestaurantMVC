@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace Restaurant.Application.ApplicationUser.ApplicationUser
     public interface IUserContext
     {
         CurrentUser GetCurrentUser();
+
+        bool CheckUser(CurrentUser user);
     }
 
     public class UserContext : IUserContext
@@ -24,6 +27,16 @@ namespace Restaurant.Application.ApplicationUser.ApplicationUser
             _contextAccessord = contextAccessord;
         }
 
+
+        public bool CheckUser(CurrentUser user)
+        {
+            if (!user.IsInRole("Owner") && !user.IsInRole("Manager") && !user.IsInRole("Admin"))
+            {
+                return false;
+            }
+            return true;
+
+        }
 
         public CurrentUser GetCurrentUser()
         {

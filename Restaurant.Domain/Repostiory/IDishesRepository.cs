@@ -13,5 +13,7 @@ namespace Restaurant.Domain.Repostiory
     {
         Task<Response> CreateDishAsync(Dishes dish, string EncodedName);
 
+        Task<IEnumerable<Dishes>> ShowDishesAsync(string restaurantEncodedName);
+
     }
 }

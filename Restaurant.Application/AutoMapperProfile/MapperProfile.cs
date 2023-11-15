@@ -59,6 +59,12 @@ namespace Restaurant.Application.AutoMapperProfile
                .ForMember(pr=>pr.PostalCity, req=>req.MapFrom(src=>src.ContactDetails.PostalCity))
                .ForMember(pr => pr.IsEditable, req => req.MapFrom(src => user!= null && src.CreatedById == user.Id));
 
+
+
+            CreateMap<Dishes, ShowDishes>()
+                .ForMember(pr => pr.EncodedName, req => req.MapFrom(src => src.DishEncodedName))
+                .ForMember(pr => pr.RestaurantName, req => req.MapFrom(src => src.Restautrant!.Name));
+
         }
     }
 }

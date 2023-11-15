@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Restaurant.Domain.Dto;
+using Restaurant.Domain.PaginationResponse;
+using Restaurant.Domain.ResponseHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +11,6 @@ namespace Restaurant.Application.ServicesDishes.Handler
 {
     public interface IDishesServicesHandler
     {
+        Task<PaginationResponse<ShowDishes>> GetRestaurantDishes(string restaurantEncodedName); 
     }
 }
