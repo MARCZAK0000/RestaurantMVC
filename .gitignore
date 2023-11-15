@@ -1,3 +1,5 @@
 Restaurant.MVC/*.json
-Restaurant.MVC/wwwroot  
+Restaurant.MVC/wwwroot/css
+Restaurant.MVC/wwwroot/lib
+Restaurant.MVC/wwwroot/favicon
 Restaurant.MVC/Properties

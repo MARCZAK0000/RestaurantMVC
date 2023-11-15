@@ -43,10 +43,10 @@
     <script src="~/lib/toastr.js/toastr.min.js"></script>
     @if(notification != null)
     {
-        <script type="text/javascript" >
+        @* <script type="text/javascript" >
             toastr["@notification.Type"]("@notification.Message")   
-        </script>
-        <script src="~/js/notification.js"></script>
+        </script> *@
+        <script src="../js/notification.js" data-type ="@notification.Type" data-currentMessage = "@notification.Message"></script>
     }
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Restaurant.Domain.Dto;
 using Restaurant.Application.ApplicationUser.ApplicationUser;
 using Restaurant.MVC.Extension;
+using Restaurant.Application.ServicesDishes.Command;
 
 namespace Restaurant.MVC.Controllers
 {
@@ -16,11 +17,15 @@ namespace Restaurant.MVC.Controllers
 
         private readonly IUserContext _userContext;
 
-        public RestaurantController(IRestaurantHandlerServices restaurantHandlerServices, IRestaurantCommandServices restaurantCommandServices, IUserContext userContext)
+        private readonly IDishesServicesCommand _dishesServicesCommand;
+
+        public RestaurantController(IRestaurantHandlerServices restaurantHandlerServices, IRestaurantCommandServices restaurantCommandServices, IUserContext userContext,
+            IDishesServicesCommand dishesServicesCommand)
         {
             _restaurantHandlerServices = restaurantHandlerServices;
             _restaurantCommandServices = restaurantCommandServices;
             _userContext = userContext;
+            _dishesServicesCommand = dishesServicesCommand;
         }
 
 
@@ -165,6 +170,35 @@ namespace Restaurant.MVC.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+
+        }
+
+        [HttpPost]
+        [Route("/Restaurant/{encodedName}/Edit/")]
+        public async Task<IActionResult> AddDish(DishDto dish)
+        {
+            var user = _userContext.GetCurrentUser();
+
+            if (!user.IsInRole("Owner") && !user.IsInRole("Manager") && !user.IsInRole("Admin"))
+            {
+                return Forbid();
+            }
+
+            if (!ModelState.IsValid) 
+            {
+                return BadRequest();
+            }
+
+          
+            var result = await _dishesServicesCommand.CreateDishAsync(dish);
+
+            if(!result.Result) 
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+            
 
         }
     }

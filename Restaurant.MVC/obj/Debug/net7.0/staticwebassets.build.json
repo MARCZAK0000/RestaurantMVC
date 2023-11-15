@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MbG0KJhHnKybkQm2zHSKlCidXEEXDpVMrFntI0Y5rz0=",
+  "Hash": "1K2W2C6Z28A7Pk3sRl67h76eyLFL3H1F8Ju0K/gHNeg=",
   "Source": "Restaurant.MVC",
   "BasePath": "_content/Restaurant.MVC",
   "Mode": "Default",
@@ -1105,12 +1105,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\notification.js",
+      "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\CreateDish.js",
       "SourceId": "Restaurant.MVC",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\",
       "BasePath": "_content/Restaurant.MVC",
-      "RelativePath": "js/notification.js",
+      "RelativePath": "js/CreateDish.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1119,7 +1119,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\notification.js"
+      "OriginalItemSpec": "wwwroot\\js\\CreateDish.js"
     },
     {
       "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\site.js",

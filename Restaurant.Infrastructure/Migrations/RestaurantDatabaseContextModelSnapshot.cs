@@ -232,6 +232,10 @@ namespace Restaurant.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("DishEncodedName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -242,17 +246,14 @@ namespace Restaurant.Infrastructure.Migrations
                     b.Property<int>("RestaurantID")
                         .HasColumnType("int");
 
-                    b.Property<int>("RestautrantId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("RestautrantId");
+                    b.HasIndex("RestaurantID");
 
                     b.ToTable("Dishes");
                 });
 
-            modelBuilder.Entity("Restaurant.Domain.Enitites.Restautrant", b =>
+            modelBuilder.Entity("Restaurant.Domain.Enitites.Restaurant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -341,16 +342,16 @@ namespace Restaurant.Infrastructure.Migrations
 
             modelBuilder.Entity("Restaurant.Domain.Enitites.Dishes", b =>
                 {
-                    b.HasOne("Restaurant.Domain.Enitites.Restautrant", "Restautrant")
+                    b.HasOne("Restaurant.Domain.Enitites.Restaurant", "Restautrant")
                         .WithMany("Dishes")
-                        .HasForeignKey("RestautrantId")
+                        .HasForeignKey("RestaurantID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Restautrant");
                 });
 
-            modelBuilder.Entity("Restaurant.Domain.Enitites.Restautrant", b =>
+            modelBuilder.Entity("Restaurant.Domain.Enitites.Restaurant", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "CreatedBy")
                         .WithMany()
@@ -358,7 +359,7 @@ namespace Restaurant.Infrastructure.Migrations
 
                     b.OwnsOne("Restaurant.Domain.Enitites.ContactDetails", "ContactDetails", b1 =>
                         {
-                            b1.Property<int>("RestautrantId")
+                            b1.Property<int>("RestaurantId")
                                 .HasColumnType("int");
 
                             b1.Property<string>("City")
@@ -389,12 +390,12 @@ namespace Restaurant.Infrastructure.Migrations
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
-                            b1.HasKey("RestautrantId");
+                            b1.HasKey("RestaurantId");
 
                             b1.ToTable("Restautrants");
 
                             b1.WithOwner()
-                                .HasForeignKey("RestautrantId");
+                                .HasForeignKey("RestaurantId");
                         });
 
                     b.Navigation("ContactDetails")
@@ -403,7 +404,7 @@ namespace Restaurant.Infrastructure.Migrations
                     b.Navigation("CreatedBy");
                 });
 
-            modelBuilder.Entity("Restaurant.Domain.Enitites.Restautrant", b =>
+            modelBuilder.Entity("Restaurant.Domain.Enitites.Restaurant", b =>
                 {
                     b.Navigation("Dishes");
                 });

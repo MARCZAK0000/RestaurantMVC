@@ -1,9 +1,12 @@
-﻿@using Restaurant.Domain.Dto;
+﻿@using Restaurant.Application.ServicesDishes.Handler;
+@using Restaurant.Domain.Dto;
 @using Restaurant.Domain.Enums;
 @model EditRestaurantDto 
+
 @{
     ViewData["Title"] = "Edit";
     var options = Enum.GetValues(typeof(RestaurantTypes)).Cast<RestaurantTypes>().ToList();
+    
 }
 
 <h1 class="display-1">Edit</h1>
@@ -121,12 +124,22 @@
     </div>
 </form>
 
+<div>
+
+</div>
+
+<div class="container d-flex">
+    <h2 class="display-4">Add Dishes</h2>
+    @await Html.PartialAsync("_modalPartialCreateDish", new DishDto())
+</div>
+
 
 
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="~/js/CreateDish.js"></script>
     }
 }
 
