@@ -124,22 +124,25 @@
     </div>
 </form>
 
-<div>
+<div class="row mt-5">
+    <div class="col-sm-6 d-flex justify-content-end">
 
+        <h2 class="display-6">Add Dishes</h2>
+    </div>
+    <div class="col-sm-6 d-flex justify-content-start">
+        @await Html.PartialAsync("_modalPartialCreateDish", new DishDto())
+    </div>
 </div>
 
-<div class="container d-flex">
-    <h2 class="display-4">Add Dishes</h2>
-    @await Html.PartialAsync("_modalPartialCreateDish", new DishDto())
+
+<div id="restaurant-dishes">
+
 </div>
-
-
-
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        <script src="~/js/CreateDish.js"></script>
+        <script src="~/js/CreateDish.js"  data-encodedName = "@Model.EncodedName"></script>
     }
 }
 

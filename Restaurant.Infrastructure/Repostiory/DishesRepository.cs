@@ -1,4 +1,5 @@
-﻿using Restaurant.Domain.Dto;
+﻿using Microsoft.EntityFrameworkCore;
+using Restaurant.Domain.Dto;
 using Restaurant.Domain.Enitites;
 using Restaurant.Domain.HelperServices;
 using Restaurant.Domain.ResponseHelper;
@@ -20,12 +21,30 @@ namespace Restaurant.Infrastructure.Repostiory
             
         }
 
-        public async Task<Response> CreateDishAsync(Dishes dish)
+        public async Task<Response> CreateDishAsync(Dishes dish, string EncodedName)
         {
-            var key = await _helperServices.GetGeneratedRandomKeyAsync();
-            dish.DishEncodeName(key);
+            var getRestaurant = await _databaseContext
+                .Restautrants
+                .FirstOrDefaultAsync(pr => pr.EncodedName.ToLower() == EncodedName.ToLower());
 
-            _databaseContext.Dishes.Add(dish);
+            if (getRestaurant == null)
+            {
+                return _response.SetResult(false)
+                    .SetMessage("There is no restaurant with that encodedName")
+                    .Build();
+            }
+                
+            var newDish = new Dishes()
+            {
+                Name = dish.Name,
+                Describition = dish.Describition,
+                Price = dish.Price, 
+                RestaurantID = getRestaurant.Id
+            };
+            var key = await _helperServices.GetGeneratedRandomKeyAsync();
+            newDish.DishEncodeName(key);
+
+            _databaseContext.Dishes.Add(newDish);
             await _databaseContext.SaveChangesAsync();
 
             _databaseContext.SaveChangesFailed += _databaseContext_SaveChangesFailed;

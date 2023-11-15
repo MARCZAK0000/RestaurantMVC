@@ -17,8 +17,52 @@
       "PackagePath": "staticwebassets\\js\\CreateDish.js"
     },
     {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\notifications.js",
+      "PackagePath": "staticwebassets\\js\\notifications.js"
+    },
+    {
       "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\bootstrap-icons.svg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\bootstrap-icons.svg"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\font\\bootstrap-icons.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\font\\bootstrap-icons.css"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\font\\bootstrap-icons.json",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\font\\bootstrap-icons.json"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\font\\bootstrap-icons.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\font\\bootstrap-icons.min.css"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\font\\fonts\\bootstrap-icons.woff",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\font\\fonts\\bootstrap-icons.woff"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\font\\fonts\\bootstrap-icons.woff2",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\font\\fonts\\bootstrap-icons.woff2"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pen.svg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\icons\\pen.svg"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pencil-fill.svg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\icons\\pencil-fill.svg"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pencil-square.svg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\icons\\pencil-square.svg"
+    },
+    {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pencil.svg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\icons\\pencil.svg"
     },
     {
       "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap\\LICENSE",

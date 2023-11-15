@@ -12,14 +12,14 @@ namespace Restaurant.Application.ServicesDishes.Command
             _dishesRepository = dishesRepository;
         }
 
-        public async Task<Response> CreateDishAsync(DishDto newDish)
+        public async Task<Response> CreateDishAsync(DishDto newDish, string RestaurantEncodedName)
         {
             var result =  await _dishesRepository.CreateDishAsync(new Domain.Enitites.Dishes()
             {
                 Name = newDish.Name,
                 Describition = newDish.Describition,
                 Price = newDish.Price,
-            });
+            }, RestaurantEncodedName);
 
             return result;
         }

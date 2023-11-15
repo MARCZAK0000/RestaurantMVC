@@ -12,9 +12,9 @@
 
         public string DishEncodedName { get; private set; }
 
-        public Restaurant Restautrant { get; set; }
+        public Restaurant? Restautrant { get; set; }
 
-        public int RestaurantID { get; set; }   
+        public int? RestaurantID { get; set; }   
 
         public string DishEncodeName(string key) => DishEncodedName = key;
     }

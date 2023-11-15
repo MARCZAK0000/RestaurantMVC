@@ -116,7 +116,8 @@ namespace Restaurant.MVC.Controllers
                 OldPostalCode = result.PostalCode,
                 OldPostalCity = result.PostalCity,
                 OldEmail = result.Email,
-                OldPhoneNumber = result.PhoneNumber
+                OldPhoneNumber = result.PhoneNumber,
+                EncodedName  = encodedName
             });
         }
 
@@ -174,8 +175,8 @@ namespace Restaurant.MVC.Controllers
         }
 
         [HttpPost]
-        [Route("/Restaurant/{encodedName}/Edit/")]
-        public async Task<IActionResult> AddDish(DishDto dish)
+        [Route("/Restaurant/{encodedName}/Edit/Dish")]
+        public async Task<IActionResult> AddDish([FromBody] DishDto dish, string encodedName)
         {
             var user = _userContext.GetCurrentUser();
 
@@ -190,16 +191,15 @@ namespace Restaurant.MVC.Controllers
             }
 
           
-            var result = await _dishesServicesCommand.CreateDishAsync(dish);
+            var result = await _dishesServicesCommand.CreateDishAsync(dish, encodedName);
 
             if(!result.Result) 
             {
+                this.SetNotification("Error", "Can't add Dishes");
                 return BadRequest();
             }
-
+            this.SetNotification("Success", "Congratulations");
             return Ok();
-            
-
         }
     }
 }

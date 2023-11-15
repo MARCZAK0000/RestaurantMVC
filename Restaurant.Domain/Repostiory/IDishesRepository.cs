@@ -11,7 +11,7 @@ namespace Restaurant.Domain.Repostiory
 {
     public interface IDishesRepository
     {
-        Task<Response> CreateDishAsync(Dishes dish);
+        Task<Response> CreateDishAsync(Dishes dish, string EncodedName);
 
     }
 }
