@@ -12,18 +12,33 @@ namespace Restaurant.Application.ServicesDishes.Handler
 {
     public class DishesServicesHandler : IDishesServicesHandler
     {
-        private readonly IRestaurantRepository _restaurantRepository;
+        private readonly IDishesRepository _dishesRepository;
 
         private readonly IMapper _mapper;
-        public DishesServicesHandler(IRestaurantRepository restaurantRepository, IMapper mapper)
+        public DishesServicesHandler(IDishesRepository dishesRepository, IMapper mapper)
         {
-            _restaurantRepository = restaurantRepository;
+            _dishesRepository = dishesRepository;
             _mapper = mapper;
         }
 
-        public async Task<PaginationResponse<ShowDishes>> GetRestaurantDishes(string restaurantEncodedName)
+        public async Task<PaginationResponse<List<ShowDishes>>> GetRestaurantDishesAsync(string restaurantEncodedName, int PageSize, int PageNumber)
         {
-            throw new NotImplementedException();
+
+            var response = new PaginationResponseBuilder<List<ShowDishes>>();
+            var result = await _dishesRepository.ShowDishesAsync(restaurantEncodedName,PageSize, PageNumber);
+
+            
+
+            var mapResult = _mapper.Map<List<ShowDishes>>(result.Items);
+            var totalCount = result.TotalItemsCount;
+
+            return response
+                .SetTotalCount(totalCount)
+                .SetItemsTo(PageSize, PageNumber)
+                .SetItemsFrom(PageSize, PageNumber)
+                .SetPageParameters(totalCount, PageSize, PageNumber)
+                .SetItems(mapResult)
+                .Build();
         }
     }
 }

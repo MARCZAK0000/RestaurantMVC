@@ -2,6 +2,8 @@
 using Restaurant.Domain.Dto;
 using Restaurant.Domain.Enitites;
 using Restaurant.Domain.HelperServices;
+using Restaurant.Domain.PaginationResponse;
+using Restaurant.Domain.Repostiory;
 using Restaurant.Domain.ResponseHelper;
 using Restaurant.Infrastructure.Database;
 
@@ -54,18 +56,29 @@ namespace Restaurant.Infrastructure.Repostiory
                 .Build();
         }
 
-        public async Task<IEnumerable<Dishes>> ShowDishesAsync(string restaurantEncodedName)
+        public async Task<PaginationResponse<IEnumerable<Dishes>>> ShowDishesAsync(string restaurantEncodedName, int PageSize, int PageNumber)
         {
-            var restaurant = await _databaseContext.Restautrants.FirstOrDefaultAsync(pr=>pr.EncodedName.ToLower() ==  restaurantEncodedName.ToLower());
-            
-            if(restaurant is null)
+            var paginationResponse = new PaginationResponseBuilder<IEnumerable<Dishes>>();
+            var restaurant = await _databaseContext.Restautrants.FirstOrDefaultAsync(pr => pr.EncodedName.ToLower() == restaurantEncodedName.ToLower());
+
+            if (restaurant is null)
             {
                 throw new Exception("Not Found restaurant");
             }
 
-            var result = await _databaseContext.Dishes.Include(pr=>pr.Restautrant).Where(pr=>pr.RestaurantID == restaurant.Id).ToListAsync();
+            var baseQuery = _databaseContext.Dishes
+                .Include(pr => pr.Restautrant)
+                .Where(pr => pr.RestaurantID == restaurant.Id);
 
-            return result;
+            var result = await baseQuery.Skip(PageSize * (PageNumber  - 1)).Take(PageSize).ToListAsync();
+
+            var TotalItemCount = baseQuery.Count();
+
+            return paginationResponse
+                .SetTotalCount(TotalItemCount)
+                .SetItems(result)
+                .Build();
+
         }
 
         private void _databaseContext_SaveChangesFailed(object? sender, Microsoft.EntityFrameworkCore.SaveChangesFailedEventArgs e)

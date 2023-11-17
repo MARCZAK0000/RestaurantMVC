@@ -11,6 +11,6 @@ namespace Restaurant.Application.ServicesDishes.Handler
 {
     public interface IDishesServicesHandler
     {
-        Task<PaginationResponse<ShowDishes>> GetRestaurantDishes(string restaurantEncodedName); 
+        Task<PaginationResponse<List<ShowDishes>>> GetRestaurantDishesAsync(string restaurantEncodedName, int PageSize, int PageNumber); 
     }
 }

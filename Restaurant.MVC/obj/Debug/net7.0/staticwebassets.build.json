@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "M7pQpQD2U/XfKrbOEq+R1+VU45Bufg08nnYi/bXXeLg=",
+  "Hash": "gMyY3nS3GHOIFVGnAMy/RDh7eqEcxcDOWvzECp0yIZY=",
   "Source": "Restaurant.MVC",
   "BasePath": "_content/Restaurant.MVC",
   "Mode": "Default",
@@ -1139,6 +1139,23 @@
       "OriginalItemSpec": "wwwroot\\js\\notifications.js"
     },
     {
+      "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\showdish.js",
+      "SourceId": "Restaurant.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\",
+      "BasePath": "_content/Restaurant.MVC",
+      "RelativePath": "js/showdish.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\showdish.js"
+    },
+    {
       "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\site.js",
       "SourceId": "Restaurant.MVC",
       "SourceType": "Discovered",
@@ -2021,6 +2038,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-icons\\font\\fonts\\bootstrap-icons.woff2"
+    },
+    {
+      "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\arrow-left.svg",
+      "SourceId": "Restaurant.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\",
+      "BasePath": "_content/Restaurant.MVC",
+      "RelativePath": "lib/bootstrap-icons/icons/arrow-left.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap-icons\\icons\\arrow-left.svg"
+    },
+    {
+      "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\arrow-right.svg",
+      "SourceId": "Restaurant.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\",
+      "BasePath": "_content/Restaurant.MVC",
+      "RelativePath": "lib/bootstrap-icons/icons/arrow-right.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap-icons\\icons\\arrow-right.svg"
     },
     {
       "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pen.svg",

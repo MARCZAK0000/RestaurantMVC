@@ -24,35 +24,6 @@ dishSave.addEventListener('click', () => {
 
 })
 
-
-
-
-const renderHtml = async () => {
-
-    const encodedName = currentScript.getAttribute('data-encodedName');
-    const response = await GetDishes(`${url}/${encodedName}/Edit/Dish`)
-
-
-    if (resonse === null || response === undefined) {
-        restaurantDishesContainer.innerHTML = `<div class = "container text-center" >There is no dishes in restaurant</div>`
-    }
-    if (response.length >= 1) {
-        restaurantDishesContainer.innerHTML = `<div>Hello</div>`
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 //methods
 const CreateDish = async (url, body) => {
 

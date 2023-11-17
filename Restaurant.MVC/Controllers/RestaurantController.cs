@@ -6,6 +6,7 @@ using Restaurant.Domain.Dto;
 using Restaurant.Application.ApplicationUser.ApplicationUser;
 using Restaurant.MVC.Extension;
 using Restaurant.Application.ServicesDishes.Command;
+using Restaurant.Application.ServicesDishes.Handler;
 
 namespace Restaurant.MVC.Controllers
 {
@@ -19,13 +20,16 @@ namespace Restaurant.MVC.Controllers
 
         private readonly IDishesServicesCommand _dishesServicesCommand;
 
+        private readonly IDishesServicesHandler _dishesServicesHandler;
+
         public RestaurantController(IRestaurantHandlerServices restaurantHandlerServices, IRestaurantCommandServices restaurantCommandServices, IUserContext userContext,
-            IDishesServicesCommand dishesServicesCommand)
+            IDishesServicesCommand dishesServicesCommand, IDishesServicesHandler dishesServicesHandler)
         {
             _restaurantHandlerServices = restaurantHandlerServices;
             _restaurantCommandServices = restaurantCommandServices;
             _userContext = userContext;
             _dishesServicesCommand = dishesServicesCommand;
+            _dishesServicesHandler = dishesServicesHandler;
         }
 
 
@@ -203,17 +207,32 @@ namespace Restaurant.MVC.Controllers
         }
 
         [HttpGet]
-        [Route("/Restaurant/{encodedName}/Edit/Dish")]
-        public async Task<IActionResult> GetDish(string encodedName)
+        [Route("/Restaurant/{encodedName}/Dish")]
+        public async Task<IActionResult> GetDish(string encodedName, int PageNumber = 1)
         {
+            const int PageSize = 1;
+
             var user = _userContext.GetCurrentUser();
+
 
             if (!_userContext.CheckUser(user))
             {
                 return Forbid();
             }
 
-            var result = await 
+            var result = await _dishesServicesHandler.GetRestaurantDishesAsync(encodedName, PageSize, PageNumber);
+
+            var response = new
+            {
+                Items = result.Items,
+                TotalItems = result.TotalItemsCount,
+                PageNumber = result.PageNumber,
+                ItemsFrom = result.ItemsFrom,
+                ItemsTo = result.ItemsTo
+
+            };
+
+            return Ok(response);
         }
     }
 }

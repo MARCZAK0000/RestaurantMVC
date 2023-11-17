@@ -8,18 +8,10 @@
     },
     {
       "library": "bootstrap-icons@1.11.1",
-      "destination": "wwwroot/lib/bootstrap-icons/",
+      "destination": "wwwroot/lib/",
       "files": [
-        "bootstrap-icons.svg",
-        "font/fonts/bootstrap-icons.woff",
-        "font/fonts/bootstrap-icons.woff2",
-        "font/bootstrap-icons.css",
-        "font/bootstrap-icons.json",
-        "font/bootstrap-icons.min.css",
-        "icons/pencil-fill.svg",
-        "icons/pen.svg",
-        "icons/pencil-square.svg",
-        "icons/pencil.svg"
+        "icons/arrow-left.svg",
+        "icons/arrow-right.svg"
       ]
     }
   ]

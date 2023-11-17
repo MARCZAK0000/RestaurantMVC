@@ -136,13 +136,14 @@
 
 
 <div id="restaurant-dishes">
-
+    @await Html.PartialAsync("_paginationDishPartial", Model.EncodedName)
 </div>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
         <script src="~/js/CreateDish.js"  data-encodedName = "@Model.EncodedName"></script>
+        <script src="~/js/showdish.js" data-encodedName="@Model.EncodedName"></script>
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using Restaurant.Domain.Dto;
 using Restaurant.Domain.Enitites;
+using Restaurant.Domain.PaginationResponse;
 using Restaurant.Domain.ResponseHelper;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Restaurant.Domain.Repostiory
     {
         Task<Response> CreateDishAsync(Dishes dish, string EncodedName);
 
-        Task<IEnumerable<Dishes>> ShowDishesAsync(string restaurantEncodedName);
+        Task<PaginationResponse<IEnumerable<Dishes>>> ShowDishesAsync(string restaurantEncodedName, int PageSize, int PageNumber);
 
     }
 }
