@@ -210,7 +210,7 @@ namespace Restaurant.MVC.Controllers
         [Route("/Restaurant/{encodedName}/Dish")]
         public async Task<IActionResult> GetDish(string encodedName, int PageNumber = 1)
         {
-            const int PageSize = 1;
+            const int PageSize = ;
 
             var user = _userContext.GetCurrentUser();
 

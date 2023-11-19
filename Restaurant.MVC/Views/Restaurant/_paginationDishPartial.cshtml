@@ -1,9 +1,15 @@
 ﻿@model string
 
 
-<div id="dish-services">
+<div id="dish-services-container" class="container-fluid"></div>
+<div id="dish-services" class="container-fluid d-flex justify-content-end">
+    <select id="dish-page-size" class="form-select">
+        <option selected>5</option>
+        <option>10</option>
+        <option>15</option>
+        <option>20</option>
+    </select>
     <button id="dish-page-down" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i></button>
     <button id="dish-page-up" class="btn btn-primary"><i class="bi bi-arrow-right"></i></button>
 </div>
-<div id="dish-servivces-container" class=""></div>
 
