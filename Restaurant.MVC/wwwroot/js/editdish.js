@@ -2,14 +2,14 @@ const CurrentRestaurantScript = document.currentScript
 $(document).ready(function () {
     
     CurrentRestaurantEncodedName = CurrentRestaurantScript.getAttribute("data-encodedName");
+    let EncodedName = ""
     $(document).on("click", ".dish-edit-service", function () {
-        let EncodedName = $(this).attr("data-encodedName")
-        const url = `https://localhost:7152/Restaurant/${CurrentRestaurantEncodedName}/Dish/${EncodedName}`
+        EncodedName = $(this).attr("data-encodedName")
+        let url = `https://localhost:7152/Restaurant/${CurrentRestaurantEncodedName}/Dish/${EncodedName}`
 
 
         let newPrice = 0;
         const RenderModalBody = (data) => {
-            console.log(data)
             $(".modal-body").html(
                 `
                 <form>
@@ -49,31 +49,31 @@ $(document).ready(function () {
             }
         })
 
-        
-        $(document).on("click", "#dish-edit-save", function () {
-            const responseBody = {
-                price: newPrice
-            }
-
-            $.ajax({
-                type: "PUT",
-                url: url,
-                data: JSON.stringify(responseBody),
-                contentType: 'application/json',
-                success: function (data) {
-                    toastr["success"](`${data.message}`)
-                },
-                error: function (data) {
-                    toastr["success"]("Something went wrong")
-                }
-
-            })
-        });
-
-        $(document).on("change", "#edit-dish-price", function () {
-            newPrice = $(this).val()
-            console.log(newPrice)
-        })
+      
 
     });
+
+    $(document).on("click", "#dish-edit-save", function () {
+        const responseBody = {
+            price: newPrice
+        }
+        let url = `https://localhost:7152/Restaurant/${CurrentRestaurantEncodedName}/Dish/${EncodedName}`
+        $.ajax({
+            type: "PUT",
+            url: url,
+            data: JSON.stringify(responseBody),
+            contentType: 'application/json',
+            success: function (data) {
+                toastr["success"](`${data.message}`)
+            },
+            error: function (data) {
+                toastr["error"]("Something went wrong")
+            }
+
+        })
+    });
+
+    $(document).on("change", "#edit-dish-price", function () {
+        newPrice = $(this).val()
+    })
 })
