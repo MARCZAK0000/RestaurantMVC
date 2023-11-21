@@ -135,15 +135,17 @@
         </div>
     </div>
     @await Html.PartialAsync("_paginationDishPartial", Model.EncodedName)
+    @await Html.PartialAsync("_modalPartialEditDish")
 </div>
 
-
+<button id="test" class="btn btn-info">chuj</button>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        <script src="~/js/CreateDish.js"  data-encodedName = "@Model.EncodedName"></script>
         <script src="~/js/showdish.js" data-encodedName="@Model.EncodedName"></script>
+        <script src="~/js/CreateDish.js"  data-encodedName = "@Model.EncodedName"></script>
+        <script src="~/js/editdish.js" data-encodedName="@Model.EncodedName"></script>
     }
 }
 

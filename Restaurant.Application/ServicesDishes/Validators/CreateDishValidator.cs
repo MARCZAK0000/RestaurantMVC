@@ -22,6 +22,7 @@ namespace Restaurant.Application.ServicesDishes.Validators
 
             RuleFor(pr => pr.Price)
                 .GreaterThan(0)
+                .LessThan(10000)
                 .NotEmpty();
         }
     }

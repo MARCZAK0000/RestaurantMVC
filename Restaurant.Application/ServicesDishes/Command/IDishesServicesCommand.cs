@@ -12,5 +12,7 @@ namespace Restaurant.Application.ServicesDishes.Command
     public interface IDishesServicesCommand
     {
         Task<Response> CreateDishAsync(DishDto newDish, string RestaurantEncodedName);
+
+        Task<Response> EditDishAsync(string RestaurantEncodedName, string encodedName, EditDishDto edit);
     }
 }

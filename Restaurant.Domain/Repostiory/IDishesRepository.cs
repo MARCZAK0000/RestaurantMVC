@@ -16,5 +16,8 @@ namespace Restaurant.Domain.Repostiory
 
         Task<PaginationResponse<IEnumerable<Dishes>>> ShowDishesAsync(string restaurantEncodedName, int PageSize, int PageNumber);
 
+        Task<Dishes> GetDishAsync(string restaurantEncodedName, string EncodedName);
+
+        Task<Response> EditDishAsync(string restaurantEncodedName, string encodedName, EditDishDto edit);
     }
 }

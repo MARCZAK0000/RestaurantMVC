@@ -21,6 +21,15 @@ namespace Restaurant.Application.ServicesDishes.Handler
             _mapper = mapper;
         }
 
+        public async Task<ShowDishes> GetDishAsync(string restaurantEncodedName, string encodedName)
+        {
+            var response = await _dishesRepository.GetDishAsync(restaurantEncodedName, encodedName);
+
+             var result = _mapper.Map<ShowDishes>(response);
+
+             return result;
+                                     }
+
         public async Task<PaginationResponse<List<ShowDishes>>> GetRestaurantDishesAsync(string restaurantEncodedName, int PageSize, int PageNumber)
         {
 

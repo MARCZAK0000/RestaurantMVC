@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\js\\CreateDish.js"
     },
     {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\editdish.js",
+      "PackagePath": "staticwebassets\\js\\editdish.js"
+    },
+    {
       "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\notifications.js",
       "PackagePath": "staticwebassets\\js\\notifications.js"
     },
@@ -57,20 +61,16 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\icons\\arrow-left.svg"
     },
     {
+      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\arrow-repeat.svg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\icons\\arrow-repeat.svg"
+    },
+    {
       "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\arrow-right.svg",
       "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\icons\\arrow-right.svg"
     },
     {
       "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pen.svg",
       "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\icons\\pen.svg"
-    },
-    {
-      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pencil-fill.svg",
-      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\icons\\pencil-fill.svg"
-    },
-    {
-      "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pencil-square.svg",
-      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\icons\\pencil-square.svg"
     },
     {
       "Id": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pencil.svg",

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gMyY3nS3GHOIFVGnAMy/RDh7eqEcxcDOWvzECp0yIZY=",
+  "Hash": "dAvLkDeBz6xzNdvWT4np1nwJe5ERKU7mqsn+UpPo+Eg=",
   "Source": "Restaurant.MVC",
   "BasePath": "_content/Restaurant.MVC",
   "Mode": "Default",
@@ -1122,6 +1122,23 @@
       "OriginalItemSpec": "wwwroot\\js\\CreateDish.js"
     },
     {
+      "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\editdish.js",
+      "SourceId": "Restaurant.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\",
+      "BasePath": "_content/Restaurant.MVC",
+      "RelativePath": "js/editdish.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\editdish.js"
+    },
+    {
       "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\js\\notifications.js",
       "SourceId": "Restaurant.MVC",
       "SourceType": "Discovered",
@@ -2057,6 +2074,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-icons\\icons\\arrow-left.svg"
     },
     {
+      "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\arrow-repeat.svg",
+      "SourceId": "Restaurant.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\",
+      "BasePath": "_content/Restaurant.MVC",
+      "RelativePath": "lib/bootstrap-icons/icons/arrow-repeat.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap-icons\\icons\\arrow-repeat.svg"
+    },
+    {
       "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\arrow-right.svg",
       "SourceId": "Restaurant.MVC",
       "SourceType": "Discovered",
@@ -2106,40 +2140,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-icons\\icons\\pencil.svg"
-    },
-    {
-      "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pencil-fill.svg",
-      "SourceId": "Restaurant.MVC",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\",
-      "BasePath": "_content/Restaurant.MVC",
-      "RelativePath": "lib/bootstrap-icons/icons/pencil-fill.svg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap-icons\\icons\\pencil-fill.svg"
-    },
-    {
-      "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\bootstrap-icons\\icons\\pencil-square.svg",
-      "SourceId": "Restaurant.MVC",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\",
-      "BasePath": "_content/Restaurant.MVC",
-      "RelativePath": "lib/bootstrap-icons/icons/pencil-square.svg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap-icons\\icons\\pencil-square.svg"
     },
     {
       "Identity": "C:\\Users\\jjmar\\Desktop\\Repository\\ASPNETCore\\RestaurantMVC\\Restaurant.MVC\\wwwroot\\lib\\jquery\\dist\\jquery.js",

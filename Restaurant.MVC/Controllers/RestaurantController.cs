@@ -208,9 +208,8 @@ namespace Restaurant.MVC.Controllers
 
         [HttpGet]
         [Route("/Restaurant/{encodedName}/Dish")]
-        public async Task<IActionResult> GetDish(string encodedName, int PageNumber = 1)
+        public async Task<IActionResult> GetDishes(string encodedName, int PageNumber = 1, int PageSize = 5)
         {
-            const int PageSize = ;
 
             var user = _userContext.GetCurrentUser();
 
@@ -233,6 +232,50 @@ namespace Restaurant.MVC.Controllers
             };
 
             return Ok(response);
+        }
+
+        [HttpGet]
+        [Route("/Restaurant/{restaurantEncodedName}/Dish/{dishEncodedName}")]
+        public async Task<IActionResult> GetDish(string restaurantEncodedName, string dishEncodedName)
+        {
+            var user = _userContext.GetCurrentUser();
+
+            if (!_userContext.CheckUser(user))
+            {
+                return Forbid();
+            }
+
+            var result = await _dishesServicesHandler.GetDishAsync(restaurantEncodedName, dishEncodedName);
+
+            return Ok(result);
+
+        }
+        [HttpPut]
+        [Route("/Restaurant/{restaurantEncodedName}/Dish/{dishEncodedName}")]
+        public async Task<IActionResult> EditDish(string restaurantEncodedName, string dishEncodedName, [FromBody] EditDishDto edit)
+        {
+            if(!ModelState.IsValid) 
+            {
+                var response = new
+                {
+                    result = false,
+                    message = "ModelState is valid"
+                };
+                return BadRequest(response);
+            }
+
+            var user = _userContext.GetCurrentUser();
+
+            if (!_userContext.CheckUser(user))
+            {
+
+                return Forbid();
+            }
+
+            var result = await _dishesServicesCommand.EditDishAsync(restaurantEncodedName, dishEncodedName, edit);
+
+            return Ok(result);
+
         }
     }
 }

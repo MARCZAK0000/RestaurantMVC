@@ -23,5 +23,8 @@ namespace Restaurant.Application.ServicesDishes.Command
 
             return result;
         }
+
+        public async Task<Response> EditDishAsync(string RestaurantEncodedName, string encodedName, EditDishDto edit) => await _dishesRepository.EditDishAsync(RestaurantEncodedName, encodedName, edit);
+        
     }
 }

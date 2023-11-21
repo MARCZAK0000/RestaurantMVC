@@ -10,7 +10,7 @@ const url = 'https://localhost:7152/Restaurant'
 
 
 //Events
-dishSave.addEventListener('click', () => {
+dishSave.addEventListener('click', async () => {
     const responseBody = {
         Name: dishName.value,
         Describition: dishDescribtion.value,
@@ -19,8 +19,7 @@ dishSave.addEventListener('click', () => {
     const encodedName = currentScript.getAttribute('data-encodedName');
 
 
-    CreateDish(`${url}/${encodedName}/Edit/Dish`, responseBody);
-
+    await CreateDish(`${url}/${encodedName}/Edit/Dish`, responseBody);
 
 })
 
