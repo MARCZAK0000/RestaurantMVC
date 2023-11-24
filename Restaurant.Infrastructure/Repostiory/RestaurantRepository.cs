@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Restaurant.Application.ApplicationUser.ApplicationUser;
 using Restaurant.Domain.Dto;
+using Restaurant.Domain.Exceptions;
 using Restaurant.Domain.HelperServices;
 using Restaurant.Domain.PaginationResponse;
 using Restaurant.Domain.ResponseHelper;
@@ -89,7 +90,7 @@ namespace Restaurant.Infrastructure.Repostiory
 
             if (result is null)
             {
-                throw new Exception("Not found");
+                throw new NotFoundException("Not found");
             }
 
             return result;
@@ -143,7 +144,7 @@ namespace Restaurant.Infrastructure.Repostiory
         private void restaurantDatabaseContext_SaveChangesFailed(object? sender, Microsoft.EntityFrameworkCore.SaveChangesFailedEventArgs e)
         {
 
-            throw new Exception("Something went wrong");
+            throw new SavingToDbException("Something went wrong");
         }
 
         public async Task<PaginationResponse<IEnumerable<Domain.Enitites.Restaurant>>> GetAllUserRestaurantsAsync(int pageSize, int pageNumber, string userID)

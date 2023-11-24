@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Restaurant.Domain.Dto;
+using Restaurant.Domain.Exceptions;
 using Restaurant.Domain.ResponseHelper;
 using System.Web;
 
@@ -126,7 +127,7 @@ namespace Restaurant.Infrastructure.Repostiory
 
             if(result is null) 
             {
-                throw new InvalidDataException("Invalid Data");
+                throw new NotFoundException("Invalid Data");
             }
 
             return result;

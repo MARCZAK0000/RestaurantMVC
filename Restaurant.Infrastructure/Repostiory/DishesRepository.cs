@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Restaurant.Domain.Dto;
 using Restaurant.Domain.Enitites;
+using Restaurant.Domain.Exceptions;
 using Restaurant.Domain.HelperServices;
 using Restaurant.Domain.PaginationResponse;
 using Restaurant.Domain.Repostiory;
@@ -66,7 +67,7 @@ namespace Restaurant.Infrastructure.Repostiory
 
             if (restaurant is null)
             {
-                throw new Exception("Not Found restaurant");
+                throw new NotFoundException("Not Found restaurant");
             }
 
             var baseQuery = _databaseContext.Dishes
@@ -94,7 +95,7 @@ namespace Restaurant.Infrastructure.Repostiory
 
             if(dish is null)
             {
-                throw new Exception("Not found");
+                throw new NotFoundException("Not found");
             }
 
              return dish;
@@ -103,7 +104,7 @@ namespace Restaurant.Infrastructure.Repostiory
 
         private void _databaseContext_SaveChangesFailed(object? sender, Microsoft.EntityFrameworkCore.SaveChangesFailedEventArgs e)
         {
-            throw new Exception("Something went bad with saving dish to database");
+            throw new SavingToDbException("Something went bad with saving dish to database");
         }
 
         public async Task<Response> EditDishAsync(string restaurantEncodedName, string encodedName, EditDishDto edit)
