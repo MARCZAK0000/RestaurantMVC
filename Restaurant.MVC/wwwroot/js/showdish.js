@@ -14,6 +14,7 @@ $(document).ready(function () {
                                 <th class="col">Description</th>
                                 <th class="col">Price w PLN mordeczko :D )</th>
                                 <th class="col">Details</th>
+                                <th class="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,8 +32,10 @@ $(document).ready(function () {
                                 <td>${data.items[i].describition}</td>
                                 <td>${data.items[i].price}</td>
                                 <td>
-                                    <a data-encodedName=${data.items[i].encodedName} class = "dish-edit-service btn btn-success">Details</a>
+                                    <a data-encodedName=${data.items[i].encodedName} class = "dish-edit-service btn btn-info">Details</a>
                                 </td>
+                                <td>
+                                    <a data-encodedName=${data.items[i].encodedName} class = "dish-delete-button btn btn-danger">Delete</a> 
                             </tr>
                         `
                 )
@@ -84,5 +87,25 @@ $(document).ready(function () {
     });
     $("#dish-page-refresh").click(function () {
         LoadDishService(1, PageSize);
+    })
+
+    $(document).on("click", ".dish-delete-button", function ()
+    {   
+        const restaurantEncodedName = currentScriptGetDish.getAttribute('data-encodedName')
+        const dishEncodedName = $(this).attr("data-encodedName")
+        const url = `https://localhost:7152/Restaurant/${restaurantEncodedName}/Dish/${dishEncodedName}`;
+        $.ajax(
+            {
+                type: "DELETE",
+                url: url,
+                success: function (data) {
+                    toastr["success"]("Congratulations")
+                    LoadDishService(1, PageSize)
+                },
+                error: function (data) {
+                    toastr["error"]("Something went wrong")
+                }
+            }
+        )
     })
 });

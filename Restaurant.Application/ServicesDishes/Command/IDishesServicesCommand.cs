@@ -14,5 +14,7 @@ namespace Restaurant.Application.ServicesDishes.Command
         Task<Response> CreateDishAsync(DishDto newDish, string RestaurantEncodedName);
 
         Task<Response> EditDishAsync(string RestaurantEncodedName, string encodedName, EditDishDto edit);
+
+        Task<Response> DeleteDishAsync(string restaurantEncodedName, string dishEncodedName);
     }
 }

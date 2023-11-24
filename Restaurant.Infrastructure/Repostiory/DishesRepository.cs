@@ -130,5 +130,28 @@ namespace Restaurant.Infrastructure.Repostiory
                 .SetResult(true)
                 .Build();
         }
+
+        public async Task<Response> DeleteDishAsync(string restaurantEncodedName, string dishEncodedName)
+        {
+            var dish = await _databaseContext.Dishes
+                .Include(pr=>pr.Restautrant)
+                .Where(pr=>pr.Restautrant!.EncodedName.ToLower()==restaurantEncodedName.ToLower())
+                .FirstOrDefaultAsync(pr=>pr.DishEncodedName.ToLower()==dishEncodedName.ToLower());  
+
+            if(dish is null)
+            {
+                return _response.SetMessage("We cannot find dish")
+                    .SetResult (false)
+                    .Build ();
+            }
+
+            _databaseContext.Dishes.Remove(dish!);
+            await _databaseContext.SaveChangesAsync();
+            _databaseContext.SaveChangesFailed += _databaseContext_SaveChangesFailed;
+
+            return _response
+                .SetResult(true)
+                .Build();
+        }
     }
 }

@@ -254,6 +254,13 @@ namespace Restaurant.MVC.Controllers
         [Route("/Restaurant/{restaurantEncodedName}/Dish/{dishEncodedName}")]
         public async Task<IActionResult> EditDish(string restaurantEncodedName, string dishEncodedName, [FromBody] EditDishDto edit)
         {
+            var user = _userContext.GetCurrentUser();
+
+            if (!_userContext.CheckUser(user))
+            {
+
+                return Forbid();
+            }
             if(!ModelState.IsValid) 
             {
                 var response = new
@@ -264,6 +271,18 @@ namespace Restaurant.MVC.Controllers
                 return BadRequest(response);
             }
 
+
+            var result = await _dishesServicesCommand.EditDishAsync(restaurantEncodedName, dishEncodedName, edit);
+
+            return Ok(result);
+        }
+
+
+        [HttpDelete]
+        [Route("/Restaurant/{restaurantEncodedName}/Dish/{dishEncodedName}")]
+        public async Task<IActionResult> DeleteDihs(string restaurantEncodedName, string dishEncodedName)
+        {
+
             var user = _userContext.GetCurrentUser();
 
             if (!_userContext.CheckUser(user))
@@ -272,9 +291,20 @@ namespace Restaurant.MVC.Controllers
                 return Forbid();
             }
 
-            var result = await _dishesServicesCommand.EditDishAsync(restaurantEncodedName, dishEncodedName, edit);
+            var result = await _dishesServicesCommand.DeleteDishAsync(restaurantEncodedName, dishEncodedName);
 
-            return Ok(result);
+            if(!result.Result)
+            {
+                var response = new 
+                {
+                    result = false,
+                    message = $"{result.Message}"
+                };
+
+                return BadRequest(response);
+            }
+
+            return Ok();
 
         }
     }

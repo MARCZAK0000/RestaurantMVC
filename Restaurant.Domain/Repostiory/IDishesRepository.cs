@@ -19,5 +19,7 @@ namespace Restaurant.Domain.Repostiory
         Task<Dishes> GetDishAsync(string restaurantEncodedName, string EncodedName);
 
         Task<Response> EditDishAsync(string restaurantEncodedName, string encodedName, EditDishDto edit);
+
+        Task<Response> DeleteDishAsync(string restaurantEncodedName, string dishEncodedName);
     }
 }
