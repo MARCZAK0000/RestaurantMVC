@@ -1,0 +1,40 @@
+﻿@model PaginationViewModel
+
+
+
+@if (Model.TotalPage > 0)
+{
+
+    <ul class="pagination justify-content-end">
+
+        <li class="page-item">
+            <a class="page-link" asp-controller="Restaurant" asp-action="Details" asp-route-pageNumber="1">First</a>
+        </li>
+        @if (Model.PageNumber > 1)
+        {
+
+            <li class="page-item ">
+                <a class="btn page-link" asp-controller="Restaurant" asp-action="Details" asp-route-pageNumber="@(Model.PageNumber-1)">Previous</a>
+            </li>
+        }
+
+        @for (var pge = Model.StartPage; pge <= Model.EndPage; pge++)
+        {
+            <li class="page-item @(pge==Model.PageNumber? "active": "")">
+                <a class="page-link" asp-controller="Restaurant" asp-action="Details" asp-route-pageNumber="@pge">@pge</a>
+            </li>
+
+        }
+        @if (Model.PageNumber < Model.TotalPage)
+        {
+            <li class="page-item">
+                <a class="btn page-link" asp-controller="Restaurant" asp-action="Detalis" asp-route-pageNumber="@(Model.PageNumber+1)">Next</a>
+            </li>
+        }
+
+        <li class="page-item">
+            <a class="page-link" asp-controller="Restaurant" asp-action="Details" asp-route-pageNumber="@Model.TotalPage">Last</a>
+        </li>
+    </ul>
+
+}

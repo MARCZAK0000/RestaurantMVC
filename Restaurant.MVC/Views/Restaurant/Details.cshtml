@@ -1,62 +1,97 @@
-﻿@using Restaurant.Domain.Dto;
-@model ParticularGetRestaurantDto
-
+﻿@model DetailsRestaurantViewModel
 
 @{
     ViewData["Title"] = "Details";
+    var info = new PaginationViewModel()
+    {
+        TotalPage = Model.ListOfDishes.TotalPage,
+        StartPage = Model.ListOfDishes.PageStart,
+        EndPage = Model.ListOfDishes.PageEnd,
+        PageNumber = Model.ListOfDishes.PageNumber
+
+    };
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>@Model.Name</h4>
+
+<div class="container">
+    <h1>Details</h1>
+    <h4>@Model.Restaurant.Name</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Restaurant.Name)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Restaurant.Name)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Restaurant.Description)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.Restaurant.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.Restaurant.PhoneNumber)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
+            @Html.DisplayFor(model => model.Restaurant.PhoneNumber)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model.Restaurant.City)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.City)
+            @Html.DisplayFor(model => model.Restaurant.City)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Street)
+            @Html.DisplayNameFor(model => model.Restaurant.Street)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Street)
+            @Html.DisplayFor(model => model.Restaurant.Street)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PostalCode)
+            @Html.DisplayNameFor(model => model.Restaurant.PostalCode)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PostalCode)
+            @Html.DisplayFor(model => model.Restaurant.PostalCode)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PostalCity)
+            @Html.DisplayNameFor(model => model.Restaurant.PostalCity)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PostalCity)
+            @Html.DisplayFor(model => model.Restaurant.PostalCity)
         </dd>
     </dl>
 </div>
 <div>
-    <a class="btn btn-primary" asp-controller="Restaurant" asp-action="Edit" asp-route-encodedName="@Model.EncodedName">Edit</a>
+    <div class="container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col">Name</th>
+                    <th class="col">Describition</th>
+                    <th class="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListOfDishes.Items)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Describition</td>
+                        <td>@item.Price</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @await Html.PartialAsync("_paginationRestaurationDishPartial", info)
+
+
+    </div>
+</div>
+<div>
+    <a class="btn btn-primary" asp-controller="Restaurant" asp-action="Edit" asp-route-encodedName="@Model.Restaurant.EncodedName">Edit</a>
     <a class="btn btn-outline-secondary" asp-action="Index">Back to List</a>
 </div>

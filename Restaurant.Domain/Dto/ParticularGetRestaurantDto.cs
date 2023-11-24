@@ -31,7 +31,7 @@ namespace Restaurant.Domain.Dto
 
         public string PostalCity { get; set; }  
 
-        public List<Dishes> Dishes { get; set; }
+        public List<ShowDishes> Dishes { get; set; }
 
         public string EncodedName { get; private set; }
 

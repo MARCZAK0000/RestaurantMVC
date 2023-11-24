@@ -7,6 +7,7 @@ using Restaurant.Application.ApplicationUser.ApplicationUser;
 using Restaurant.MVC.Extension;
 using Restaurant.Application.ServicesDishes.Command;
 using Restaurant.Application.ServicesDishes.Handler;
+using Restaurant.MVC.Models;
 
 namespace Restaurant.MVC.Controllers
 {
@@ -75,7 +76,7 @@ namespace Restaurant.MVC.Controllers
 
 
         [Route("/Restaurant/{encodedName}/details")]
-        public async Task<IActionResult> Details(string encodedName)
+        public async Task<IActionResult> Details(string encodedName, int pageNumber = 1)
         {
 
 
@@ -83,8 +84,14 @@ namespace Restaurant.MVC.Controllers
             {
                 return RedirectToAction("Index");
             }
-            var result = await _restaurantHandlerServices.GetRestaurantAsync(encodedName);
-            return View(result);
+            const int pageSize = 10;
+
+            var restaurant = await _restaurantHandlerServices.GetRestaurantAsync(encodedName);
+            var paginationsDishes = await _dishesServicesHandler.GetRestaurantDishesAsync(encodedName, pageSize, pageNumber);
+
+
+            var model = new DetailsRestaurantViewModel(paginationsDishes, restaurant);
+            return View(model);
         }
 
         [Authorize]
