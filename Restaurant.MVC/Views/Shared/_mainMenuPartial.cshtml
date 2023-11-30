@@ -3,7 +3,12 @@
 
 
 @{
-    string? currentUser = userContext.GetCurrentUser().Id;
+    string currentUser = string.Empty;
+    var user = userContext.GetCurrentUser();
+    if(user != null)
+    {
+        currentUser = user.Id;
+    }
     var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
     var currentUrl = ViewContext.RouteData.Values["Action"]?.ToString();
 }
@@ -11,7 +16,7 @@
 
 
 
-@if(currentUser is null)
+@if(currentUser == string.Empty)
 {
     <ul class="nav nav-tabs flex-grow-1">
         <li class="nav-item">

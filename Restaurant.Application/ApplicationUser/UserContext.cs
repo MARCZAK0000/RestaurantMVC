@@ -38,7 +38,7 @@ namespace Restaurant.Application.ApplicationUser.ApplicationUser
 
         }
 
-        public CurrentUser GetCurrentUser()
+        public CurrentUser? GetCurrentUser()
         {
             var user = _contextAccessord.HttpContext?.User;
 
@@ -49,7 +49,7 @@ namespace Restaurant.Application.ApplicationUser.ApplicationUser
 
             if (user.Identity is null || !user.Identity.IsAuthenticated)
             {
-                return new CurrentUser(null!, null!, null!);
+                return null;
             }
 
             string? id = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
